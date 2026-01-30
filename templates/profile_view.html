@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}Profile - Enterprise Portal{% endblock %}
+{% block content %}
+<main class="container">
+    <section class="profile-card">
+      <div class="profile-header">
+        <div class="avatar">{{ user.first_name|first|default:user.username|first|upper }}{{ user.last_name|first|upper }}</div>
+        <div class="profile-title">
+          <h1>{{ user.get_full_name|default:user.username }}</h1>
+          <p>Westlake University · Bachelor of Computer Science</p>
+          <p>Student Housing Community: Cedar Hall</p>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h2>Personal Information</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <span>Full Name</span>
+            <p>{{ user.get_full_name|default:user.username }}</p>
+          </div>
+          <div class="info-item">
+            <span>Student ID</span>
+            <p>{{ user.username }}</p>
+          </div>
+          <div class="info-item">
+            <span>Email Address</span>
+            <p>{{ user.email }}</p>
+          </div>
+          <div class="info-item">
+            <span>Phone Number</span>
+            <p>+1 (555) 012-4990</p>
+          </div>
+          <div class="info-item">
+            <span>Residence / Housing</span>
+            <p>Cedar Hall · Room 214</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h2>Academic Information</h2>
+        <div class="info-grid">
+          <div class="info-item">
+            <span>Institution</span>
+            <p>Westlake University</p>
+          </div>
+          <div class="info-item">
+            <span>Department</span>
+            <p>Engineering & Computing</p>
+          </div>
+          <div class="info-item">
+            <span>Enrollment Status</span>
+            <p>{{ user.get_role_display }}</p>
+          </div>
+          <div class="info-item">
+            <span>Year / Semester</span>
+            <p>Year 2 · Fall Semester</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h2>Preferences</h2>
+        <div class="preferences">
+          <div class="pref-item">
+            <div class="pref-label">
+              <strong>Notifications</strong>
+              <span>Campus updates and reminders</span>
+            </div>
+            <div class="pref-state">Enabled</div>
+          </div>
+          <div class="pref-item">
+            <div class="pref-label">
+              <strong>Communication</strong>
+              <span>Email + SMS</span>
+            </div>
+            <div class="pref-state">Preferred</div>
+          </div>
+          <div class="pref-item">
+            <div class="pref-label">
+              <strong>Housing Alerts</strong>
+              <span>Maintenance updates</span>
+            </div>
+            <div class="pref-state">Enabled</div>
+          </div>
+          <div class="pref-item">
+            <div class="pref-label">
+              <strong>Event Digests</strong>
+              <span>Weekly campus events</span>
+            </div>
+            <div class="pref-state">Weekly</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h2>Account Actions</h2>
+        <div class="profile-actions">
+          <a class="btn btn-primary" href="{% url 'accounts:profile_edit' %}">Edit Profile</a>
+          <button class="btn btn-secondary" type="button">Change Password</button>
+          <a class="logout" href="{% url 'accounts:logout' %}">Logout</a>
+        </div>
+      </div>
+    </section>
+</main>
+{% endblock %}

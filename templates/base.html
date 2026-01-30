@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Enterprise Portal{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="{% if user.is_authenticated %}is-auth{% endif %} {% block body_class %}{% endblock %}">
+    {% if user.is_authenticated %}
+    <nav class="navbar">
+        <div class="navbar-inner">
+            {% if user.is_superuser or user.is_admin %}
+            <a class="brand-mark" href="{% url 'dashboards:admin' %}">Enterprise<span>Portal</span></a>
+            {% elif user.is_approved and user.role == "faculty" %}
+            <a class="brand-mark" href="{% url 'dashboards:faculty' %}">Enterprise<span>Portal</span></a>
+            {% elif user.is_approved and user.role == "hod" %}
+            <a class="brand-mark" href="{% url 'dashboards:hod' %}">Enterprise<span>Portal</span></a>
+            {% elif user.is_approved and user.role == "principal" %}
+            <a class="brand-mark" href="{% url 'dashboards:principal' %}">Enterprise<span>Portal</span></a>
+            {% else %}
+            <a class="brand-mark" href="{% url 'dashboards:student' %}">Enterprise<span>Portal</span></a>
+            {% endif %}
+            <div class="nav-links">
+                {% if user.is_superuser or user.is_admin %}
+                <a href="{% url 'dashboards:admin' %}">Admin Dashboard</a>
+                {% elif user.is_approved and user.role == "faculty" %}
+                <a href="{% url 'dashboards:faculty' %}">Faculty Dashboard</a>
+                {% elif user.is_approved and user.role == "hod" %}
+                <a href="{% url 'dashboards:hod' %}">HOD Dashboard</a>
+                {% elif user.is_approved and user.role == "principal" %}
+                <a href="{% url 'dashboards:principal' %}">Principal Dashboard</a>
+                {% else %}
+                <a href="{% url 'dashboards:student' %}">Student Dashboard</a>
+                {% endif %}
+                <a href="{% url 'accounts:profile' %}">Profile</a>
+                <a href="{% url 'accounts:logout' %}">Logout</a>
+            </div>
+        </div>
+    </nav>
+    {% endif %}
+
+    <div class="base-content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

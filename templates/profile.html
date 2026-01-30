@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Profile - Enterprise Portal{% endblock %}
+{% block content %}
+<main class="container">
+    <section class="card">
+        <header class="brand">
+            <h1>Edit <span>Profile</span></h1>
+            <p>Update your account details</p>
+        </header>
+
+        {% if form and form.errors %}
+        <div class="form-errors">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <form method="post" autocomplete="on">
+            {% csrf_token %}
+            <div class="field">
+                <label for="id_first_name">First name</label>
+                {{ form.first_name }}
+            </div>
+            <div class="field">
+                <label for="id_last_name">Last name</label>
+                {{ form.last_name }}
+            </div>
+            <div class="field">
+                <label for="id_username">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="field">
+                <label for="id_email">Email</label>
+                {{ form.email }}
+            </div>
+            <div class="actions">
+                <button class="primary-button" type="submit">Save Changes</button>
+                <a class="btn btn-secondary" href="{% url 'accounts:profile' %}">Cancel</a>
+                <span class="footer-note">Role changes require admin approval.</span>
+            </div>
+        </form>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard">
+    <h1>Admin Dashboard</h1>
+    <div class="panel-grid">
+        <div class="panel">
+            <h3>User Management</h3>
+            <p>Approve accounts and assign roles in the admin console.</p>
+            <a class="link" href="/admin/">Open Admin Console</a>
+        </div>
+        <div class="panel">
+            <h3>Access Control</h3>
+            <p>Enable or disable user access safely.</p>
+        </div>
+        <div class="panel">
+            <h3>Audit</h3>
+            <p>Review login activity and operational status.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Login - Enterprise Portal{% endblock %}
+{% block body_class %}auth-page{% endblock %}
+{% block content %}
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a class="brand-mark" href="{% url 'dashboards:home' %}">Enterprise<span>Portal</span></a>
+        <div class="nav-links">
+            <a href="{% url 'dashboards:home' %}">Home</a>
+            <a href="{% url 'accounts:login' %}">Login</a>
+            <a href="{% url 'accounts:register' %}">Register</a>
+        </div>
+    </div>
+</nav>
+
+<main class="auth-shell">
+    <section class="card">
+        <header class="brand">
+            <h1>Enterprise<span>Portal</span></h1>
+            <p>Secure access to your workspace</p>
+        </header>
+
+        {% if form.errors %}
+        <div class="form-errors">
+            {{ form.non_field_errors }}
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <form method="post" autocomplete="on">
+            {% csrf_token %}
+            <div class="field">
+                <label for="login-email">Email</label>
+                <input id="login-email" type="text" name="username" placeholder="you@company.com" required />
+            </div>
+            <div class="field">
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" name="password" placeholder="Enter your password" required />
+            </div>
+            <div class="support-row">
+                <a class="link" href="#forgot">Forgot password?</a>
+            </div>
+            <div class="actions">
+                <button class="primary-button" type="submit">Sign In</button>
+                <span class="footer-note">Secure access with enterprise-grade protection.</span>
+            </div>
+        </form>
+
+        <div class="register-prompt">
+            Don't have an account? <a class="link" href="{% url 'accounts:register' %}">Create Account</a>
+        </div>
+    </section>
+</main>
+{% endblock %}

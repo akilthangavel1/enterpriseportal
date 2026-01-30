@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+{% block title %}CRM Home{% endblock %}
+{% block content %}
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a class="brand-mark" href="#top">Enterprise<span>Portal</span></a>
+      <div class="nav-links">
+        <a href="#top">Home</a>
+        <a href="#features">Features</a>
+        <a href="{% url 'accounts:login' %}">Login</a>
+        <a href="{% url 'accounts:register' %}">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="page">
+    <section class="container hero">
+      <div>
+        <h1>Modern CRM built to simplify campus life across universities and housing communities.</h1>
+        <p>Unify student services, housing operations, and campus communications into one intelligent platform designed
+          for clarity, speed, and accountability.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#cta">Request Demo</a>
+          <a class="btn btn-secondary" href="#features">Explore Platform</a>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <h3>Unified Campus View</h3>
+          <p>See student engagement, housing assignments, and service tickets in one streamlined workspace.</p>
+        </div>
+        <div class="card mt-16">
+          <h3>Operational Visibility</h3>
+          <p>Track occupancy, maintenance cycles, and communication performance with clean, actionable dashboards.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="container section">
+      <h2>Platform features designed for higher education teams</h2>
+      <p>From admissions to residence life, every workflow stays connected and automated.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Student Relationship CRM</h3>
+          <p>Manage admissions, retention, and support journeys with a single student profile.</p>
+        </div>
+        <div class="card">
+          <h3>Housing Operations</h3>
+          <p>Coordinate room assignments, maintenance, and inspections in one workspace.</p>
+        </div>
+        <div class="card">
+          <h3>Omni-Channel Messaging</h3>
+          <p>Send personalized updates across email, SMS, and portal alerts.</p>
+        </div>
+        <div class="card">
+          <h3>Workflow Automation</h3>
+          <p>Automate approvals, escalations, and service routing with precision.</p>
+        </div>
+        <div class="card">
+          <h3>Analytics & Reports</h3>
+          <p>Measure engagement, occupancy, and satisfaction with real-time metrics.</p>
+        </div>
+        <div class="card">
+          <h3>Compliance Ready</h3>
+          <p>Maintain secure access controls and audit-ready activity tracking.</p>
+        </div>
+        <div class="card">
+          <h3>Smart Fee Collection</h3>
+          <p>Automate campus payments with centralized reconciliation and clear visibility.</p>
+        </div>
+        <div class="card">
+          <h3>Dining & Cafeteria</h3>
+          <p>Manage meals, bookings, and usage patterns to reduce waste.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>Built for modern campus operations</h2>
+      <p>Serve students, staff, and housing teams with one unified digital campus platform.</p>
+      <div class="stats">
+        <div class="stat">
+          <strong>50%</strong>
+          <span>Lower food waste through intelligent dining insights</span>
+        </div>
+        <div class="stat">
+          <strong>30 min</strong>
+          <span>Rapid onboarding for new campus teams</span>
+        </div>
+        <div class="stat">
+          <strong>24/7</strong>
+          <span>Responsive support for mission-critical operations</span>
+        </div>
+        <div class="stat">
+          <strong>Zero</strong>
+          <span>Processing fee options for student payments</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>Campus living workflows, fully connected</h2>
+      <p>Every stakeholder stays aligned through one source of truth and real-time notifications.</p>
+      <div class="list">
+        <div class="list-item">
+          <h3>Centralized Communication</h3>
+          <p>Reach students and staff across multiple channels with consistent messaging.</p>
+        </div>
+        <div class="list-item">
+          <h3>IoT & Access Integration</h3>
+          <p>Sync with access control, smart locks, and campus devices for seamless entry.</p>
+        </div>
+        <div class="list-item">
+          <h3>ERP & Tool Plug-ins</h3>
+          <p>Connect existing systems in a few clicks to keep data current and trusted.</p>
+        </div>
+      </div>
+      <div class="pill-row">
+        <div class="pill">Role-Based Access</div>
+        <div class="pill">End-to-End Encryption</div>
+        <div class="pill">SSO Ready</div>
+        <div class="pill">Audit Trails</div>
+        <div class="pill">Real-Time Analytics</div>
+      </div>
+    </section>
+
+    <section id="solutions" class="container section">
+      <h2>Benefits for institutions and housing partners</h2>
+      <p>Deliver seamless campus experiences while simplifying operational complexity.</p>
+      <div class="benefits">
+        <div class="benefit-item">
+          <h4>Unified Services</h4>
+          <p>Centralize requests, tickets, and communications for faster resolution.</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Higher Retention</h4>
+          <p>Proactively engage students with timely, relevant support.</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Operational Efficiency</h4>
+          <p>Reduce manual workflows with smart automation and clear ownership.</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Data Confidence</h4>
+          <p>Make decisions with accurate, consolidated reporting.</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Operational Savings</h4>
+          <p>Reduce administrative workload and optimize campus resources.</p>
+        </div>
+        <div class="benefit-item">
+          <h4>Student Experience</h4>
+          <p>Deliver faster support and smoother campus living journeys.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2>What campus leaders are saying</h2>
+      <p>Institutions are transforming housing, dining, and student engagement outcomes.</p>
+      <div class="quote-grid">
+        <div class="quote">
+          <span>Residence Life</span>
+          <p>“We consolidated housing workflows and cut response times dramatically.”</p>
+        </div>
+        <div class="quote">
+          <span>Campus Dining</span>
+          <p>“Usage analytics helped reduce food waste while improving student satisfaction.”</p>
+        </div>
+        <div class="quote">
+          <span>Student Success</span>
+          <p>“One platform gives us full visibility into engagement and support journeys.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="container section">
+      <div class="cta">
+        <div>
+          <h2>Ready to modernize your campus operations?</h2>
+          <p>See how our CRM platform helps universities and housing teams simplify every touchpoint.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="{% url 'accounts:register' %}">Start Free Trial</a>
+          <a class="btn btn-secondary" href="{% url 'accounts:login' %}">Sign In</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container">
+      Built for universities, colleges, and student housing communities.
+    </footer>
+  </main>
+{% endblock %}
