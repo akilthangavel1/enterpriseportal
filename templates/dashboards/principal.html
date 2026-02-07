@@ -1,20 +1,8 @@
 {% extends "base.html" %}
+{% block body_class %}dashboard-page{% endblock %}
 {% block content %}
-<div class="dashboard">
+<div class="container">
     <h1>Principal Dashboard</h1>
-    <div class="panel-grid">
-        <div class="panel">
-            <h3>Institution KPIs</h3>
-            <p>Monitor strategic goals and outcomes.</p>
-        </div>
-        <div class="panel">
-            <h3>Approvals</h3>
-            <p>Review policy updates and escalations.</p>
-        </div>
-        <div class="panel">
-            <h3>Leadership Updates</h3>
-            <p>Communicate with department heads.</p>
-        </div>
-    </div>
+    <p class="welcome-text">Welcome back, {{ user.first_name|default:user.username }}!</p>
 </div>
 {% endblock %}

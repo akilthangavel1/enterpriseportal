@@ -1,20 +1,8 @@
 {% extends "base.html" %}
+{% block body_class %}dashboard-page{% endblock %}
 {% block content %}
-<div class="dashboard">
+<div class="container">
     <h1>HOD Dashboard</h1>
-    <div class="panel-grid">
-        <div class="panel">
-            <h3>Department Overview</h3>
-            <p>Review department performance and metrics.</p>
-        </div>
-        <div class="panel">
-            <h3>Faculty Approvals</h3>
-            <p>Evaluate requests and academic planning.</p>
-        </div>
-        <div class="panel">
-            <h3>Reporting</h3>
-            <p>Generate and export departmental reports.</p>
-        </div>
-    </div>
+    <p class="welcome-text">Welcome back, {{ user.first_name|default:user.username }}!</p>
 </div>
 {% endblock %}

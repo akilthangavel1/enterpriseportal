@@ -1,20 +1,9 @@
 {% extends "base.html" %}
+{% block body_class %}dashboard-page{% endblock %}
+
 {% block content %}
-<div class="dashboard">
+<div class="container">
     <h1>Student Dashboard</h1>
-    <div class="panel-grid">
-        <div class="panel">
-            <h3>My Courses</h3>
-            <p>Access enrolled courses and schedules.</p>
-        </div>
-        <div class="panel">
-            <h3>Assignments</h3>
-            <p>Track submission status and feedback.</p>
-        </div>
-        <div class="panel">
-            <h3>Support</h3>
-            <p>Raise tickets and contact faculty.</p>
-        </div>
-    </div>
+    <p class="welcome-text">Welcome back, {{ user.first_name|default:user.username }}!</p>
 </div>
 {% endblock %}

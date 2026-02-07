@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="form-card" style="background: var(--white); border: 1px solid var(--line); padding: 32px; max-width: 800px; margin: 0 auto;">
+        <h1 style="margin-bottom: 24px; font-size: 24px;">Create Announcement</h1>
+        <form method="post" style="display: grid; gap: 20px;">
+            {% csrf_token %}
+            
+            <div class="form-group" style="display: grid; gap: 8px;">
+                <label for="{{ form.department.id_for_label }}" style="font-weight: 600; font-size: 14px; color: var(--text);">Target Department</label>
+                {{ form.department }}
+                {% if form.department.errors %}
+                <div class="error-message" style="color: #ef4444; font-size: 13px;">{{ form.department.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group" style="display: grid; gap: 8px;">
+                <label for="{{ form.title.id_for_label }}" style="font-weight: 600; font-size: 14px; color: var(--text);">Title</label>
+                {{ form.title }}
+                {% if form.title.errors %}
+                <div class="error-message" style="color: #ef4444; font-size: 13px;">{{ form.title.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group" style="display: grid; gap: 8px;">
+                <label for="{{ form.description.id_for_label }}" style="font-weight: 600; font-size: 14px; color: var(--text);">Description</label>
+                {{ form.description }}
+                {% if form.description.errors %}
+                <div class="error-message" style="color: #ef4444; font-size: 13px;">{{ form.description.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-actions" style="display: flex; gap: 12px; margin-top: 12px;">
+                <button type="submit" class="primary-button" style="cursor: pointer;">Publish Announcement</button>
+                <a href="{% url 'announcement_list' %}" style="padding: 12px 20px; border: 1px solid var(--line); color: var(--text); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center;">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

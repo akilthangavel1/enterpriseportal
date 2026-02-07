@@ -39,10 +39,64 @@
             </div>
         </div>
     </nav>
-    {% endif %}
 
+    <div class="dashboard-container">
+        <aside class="dashboard-sidebar">
+            <ul class="sidebar-menu">
+                {% if user.is_superuser or user.is_admin %}
+                    <li><a href="{% url 'dashboards:admin' %}" class="{% if request.resolver_match.url_name == 'admin' %}active{% endif %}">Dashboard</a></li>
+                    <li><a href="{% url 'announcement_list' %}" class="{% if 'announcement' in request.resolver_match.url_name %}active{% endif %}">Announcements</a></li>
+                    <li><a href="#">Users</a></li>
+                    <li><a href="#">Departments</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Settings</a></li>
+                {% elif user.role == "principal" %}
+                    <li><a href="{% url 'dashboards:principal' %}" class="{% if request.resolver_match.url_name == 'principal' %}active{% endif %}">Dashboard</a></li>
+                    <li><a href="{% url 'announcement_list' %}" class="{% if 'announcement' in request.resolver_match.url_name %}active{% endif %}">Announcements</a></li>
+                    <li><a href="#">Departments</a></li>
+                    <li><a href="#">Faculty</a></li>
+                    <li><a href="#">Students</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Settings</a></li>
+                {% elif user.role == "hod" %}
+                    <li><a href="{% url 'dashboards:hod' %}" class="{% if request.resolver_match.url_name == 'hod' %}active{% endif %}">Dashboard</a></li>
+                    <li><a href="{% url 'announcement_list' %}" class="{% if 'announcement' in request.resolver_match.url_name %}active{% endif %}">Announcements</a></li>
+                    <li><a href="#">Department</a></li>
+                    <li><a href="#">Faculty</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Reports</a></li>
+                    <li><a href="#">Settings</a></li>
+                {% elif user.role == "faculty" %}
+                    <li><a href="{% url 'dashboards:faculty' %}" class="{% if request.resolver_match.url_name == 'faculty' %}active{% endif %}">Dashboard</a></li>
+                    <li><a href="{% url 'announcement_list' %}" class="{% if 'announcement' in request.resolver_match.url_name %}active{% endif %}">Announcements</a></li>
+                    <li><a href="#">My Courses</a></li>
+                    <li><a href="#">Assignments</a></li>
+                    <li><a href="#">Grades</a></li>
+                    <li><a href="#">Schedule</a></li>
+                    <li><a href="#">Settings</a></li>
+                {% else %}
+                    <li><a href="{% url 'dashboards:student' %}" class="{% if request.resolver_match.url_name == 'student' %}active{% endif %}">Dashboard</a></li>
+                    <li><a href="{% url 'announcement_list' %}" class="{% if 'announcement' in request.resolver_match.url_name %}active{% endif %}">Announcements</a></li>
+                    <li><a href="#">My Courses</a></li>
+                    <li><a href="#">Assignments</a></li>
+                    <li><a href="#">Grades</a></li>
+                    <li><a href="#">Schedule</a></li>
+                    <li><a href="#">Library</a></li>
+                    <li><a href="#">Settings</a></li>
+                {% endif %}
+            </ul>
+        </aside>
+        <main class="dashboard-main">
+    {% else %}
     <div class="base-content">
+    {% endif %}
         {% block content %}{% endblock %}
+    {% if user.is_authenticated %}
+        </main>
     </div>
+    {% else %}
+    </div>
+    {% endif %}
 </body>
 </html>

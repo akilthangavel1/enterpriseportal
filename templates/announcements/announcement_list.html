@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h1>Announcements</h1>
+        {% if can_create %}
+        <a href="{% url 'announcement_create' %}" class="primary-button" style="text-decoration: none;">Create Announcement</a>
+        {% endif %}
+    </div>
+
+    <div class="announcements-grid" style="display: grid; gap: 20px;">
+        {% for announcement in announcements %}
+        <div class="announcement-card" style="background: var(--white); border: 1px solid var(--line); padding: 24px; display: grid; gap: 12px;">
+            <div class="announcement-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="badge" style="background: var(--accent-soft); color: var(--accent); padding: 4px 8px; font-size: 12px; font-weight: 600; border-radius: 4px;">{{ announcement.get_department_display }}</span>
+                <span class="date" style="color: var(--muted); font-size: 13px;">{{ announcement.created_at|date:"M d, Y" }}</span>
+            </div>
+            <h3 style="font-size: 18px; margin: 0;">{{ announcement.title }}</h3>
+            <p style="color: var(--muted); line-height: 1.6;">{{ announcement.description }}</p>
+            <div class="announcement-footer" style="border-top: 1px solid var(--line); padding-top: 12px; margin-top: 4px;">
+                <span class="author" style="font-size: 13px; color: var(--muted);">Posted by <strong>{{ announcement.created_by.first_name|default:announcement.created_by.username }}</strong></span>
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-state" style="text-align: center; padding: 40px; color: var(--muted);">
+            <p>No announcements found.</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if is_paginated %}
+    <div class="pagination" style="margin-top: 24px; display: flex; gap: 8px; justify-content: center;">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary">Previous</a>
+        {% endif %}
+        <span class="current-page" style="padding: 8px 12px;">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary">Next</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

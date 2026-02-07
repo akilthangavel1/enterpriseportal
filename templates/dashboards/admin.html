@@ -1,21 +1,8 @@
 {% extends "base.html" %}
+{% block body_class %}dashboard-page{% endblock %}
 {% block content %}
-<div class="dashboard">
+<div class="container">
     <h1>Admin Dashboard</h1>
-    <div class="panel-grid">
-        <div class="panel">
-            <h3>User Management</h3>
-            <p>Approve accounts and assign roles in the admin console.</p>
-            <a class="link" href="/admin/">Open Admin Console</a>
-        </div>
-        <div class="panel">
-            <h3>Access Control</h3>
-            <p>Enable or disable user access safely.</p>
-        </div>
-        <div class="panel">
-            <h3>Audit</h3>
-            <p>Review login activity and operational status.</p>
-        </div>
-    </div>
+    <p class="welcome-text">Welcome back, {{ user.first_name|default:user.username }}!</p>
 </div>
 {% endblock %}
